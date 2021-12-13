@@ -30,28 +30,31 @@ class Enter extends Component {
         .catch(er=>console.error(er))
     }
     render() { 
+        const { sentences, sentence } = this.state
         return (
             <center>
             <div>
             <label htmlFor="inputPassword5">Write your note here</label>
-            <input placeholder="Write here" onChange={e=>this.setState({sentence:{...this.state.sentence,line:e.target.value}})} type="text" id="inputPassword5" className="form-control" aria-describedby="passwordHelpBlock"/>
+            <input placeholder="Write here" onChange={e=>this.setState({sentence:{...sentence,line:e.target.value}})} type="text" id="inputPassword5" className="form-control" aria-describedby="passwordHelpBlock"/>
             <small id="passwordHelpBlock" className="form-text text-muted">
             Your note must be 20-40 characters long, contain letters and numbers, special characters, or emoji.
             </small> <br></br>
             <button type="button" onClick={this.addnote} className="btn btn-primary" >Submit</button><br></br><br></br>
             <hr></hr>
             <h4>Enter the serial number of note to delete</h4>
-            <input onChange={e=>this.setState({sentence:{...this.state.sentence,sno:e.target.value}})} type='number'/><br></br>
+            <input onChange={e=>this.setState({sentence:{...sentence,sno:e.target.value}})} type='number'/><br></br>
             <br></br>
             <button type="button" onClick={this.delete} className="btn btn-primary" >Delete</button><br></br><hr></hr>
             <br></br>
             <ul className="list-group">
-            {this.state.sentences.map(this.renderproducts)}
+            {sentences} 
+ 
+            
             </ul>
             </div>
             </center>
        );
     }
 }
- 
+// { sentences.map()}
 export default Enter;
