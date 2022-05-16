@@ -25,7 +25,8 @@ class Enter extends Component {
     </li>
     fetchitems=()=>{
         fetch('https://my-note-app1.herokuapp.com/')
-        .then(response=>response.json())
+        .then(response=>{console.log(response,'response'); 
+        return response.json()})
         .then((response)=>this.setState({sentences:response.data}))
         .catch(er=>console.error(er))
     }
@@ -47,8 +48,13 @@ class Enter extends Component {
             <button type="button" onClick={this.delete} className="btn btn-primary" >Delete</button><br></br><hr></hr>
             <br></br>
             <ul className="list-group">
-            {sentences} 
- 
+            {/* {console.log(sentences,'these sentencesssssss')}  */}
+            {sentences.length && sentences.map((s,i) => <span key={i}> {s.sno + ":   "}
+                <li key={s.sno} value={s.sentence}>{s.sentence}</li>
+
+            </span>
+                
+                )}
             
             </ul>
             </div>
